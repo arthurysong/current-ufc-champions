@@ -15,7 +15,10 @@ class CurrentUfcChampions::CLI
     champion.text
   end
   array_of_champion_names.insert(6, "") #hard code position 6 because title is vacant
+  array_of_info = doc.css("p").text.split("Won title:") #select p element texts and split by "won title"
+  array_of_info = array_of_info[1, 12] #delete text elements that are extraneous
   binding.pry
+  
   
   DIVISION_INSTANCES = division_array.collect do |division_element| #creates an array of division instances
     temp = division_element.text.split(" (") #temp array containing name and weight .. need to parse
@@ -32,7 +35,9 @@ class CurrentUfcChampions::CLI
     end
   end
   
-#  binding.pry
+  DIVISION_INSTANCES.each_with_index do |division, index|
+    
+  end
   
 #  HEAVYWEIGHT = CurrentUfcChampions::Division.new("Heavyweight", "Up to 265 pounds")
 #  HEAVYWEIGHT.champion = CurrentUfcChampions::Champion.new("Daniel Cormier")
