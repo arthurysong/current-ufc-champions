@@ -25,69 +25,98 @@ class CurrentUfcChampions::CLI
   end
   
   def user_input
-    puts "Select which division you would like to see (1-12): "
+ #   choice = "" 
+ #   while choice != "q"
+    puts "Select which division you would like to see (1-12) or 'q' to quit: "
     choice = gets.chomp
     case choice
     when "1"
-      puts "Heavyweight (Up to 265 pounds)"
+      puts "Heavyweight Division (Up to 265 pounds)"
       puts "Champion: Daniel Cormier"
       puts "Won title: July 7, 2018"
       puts "Defenses: 1"
+      return_to_main_menu
     when "2"
-      puts "Light heavyweight (205)"
+      puts "Light heavyweight Division (205)"
       puts "Champion: "
       puts "Won title: "
       puts "Defenses: "
+      return_to_main_menu
     when "3"
-      puts "Middleweight (185)"
+      puts "Middleweight Division (185)"
       puts "Champion: "
       puts "Won title: "
       puts "Defenses: "
+      return_to_main_menu
     when "4"
-      puts "Welterweight (170)"
+      puts "Welterweight Division (170)"
       puts "Champion: "
       puts "Won title: "
       puts "Defenses: "
+      return_to_main_menu
     when "5"
-      puts "Lightweight (155)"
+      puts "Lightweight Division (155)"
       puts "Champion: "
       puts "Won title: "
       puts "Defenses: "
+      return_to_main_menu
     when "6"
-      puts "Men's featherweight (145)"
+      puts "Men's featherweight Division (145)"
       puts "Champion: "
       puts "Won title: "
       puts "Defenses: "
+      return_to_main_menu
     when "7"
-      puts "Men's bantamweight (135)"
+      puts "Men's bantamweight Division (135)"
       puts "Champion: "
       puts "Won title: "
       puts "Defenses: "
+      return_to_main_menu
     when "8"
-      puts "Men's flyweight (125)"
+      puts "Men's flyweight Division (125)"
       puts "Champion: "
       puts "Won title: "
       puts "Defenses: "
+      return_to_main_menu
     when "9"
-      puts "Women's featherweight (145)"
+      puts "Women's featherweight Division (145)"
       puts "Champion: "
       puts "Won title: "
       puts "Defenses: "
+      return_to_main_menu
     when "10"
-      puts "Women's bantamweight (135)"
+      puts "Women's bantamweight Division (135)"
       puts "Champion: "
       puts "Won title: "
       puts "Defenses: "
+      return_to_main_menu
     when "11"
-      puts "Women's flyweight (125)"
+      puts "Women's flyweight Division (125)"
       puts "Champion: "
       puts "Won title: "
       puts "Defenses: "
+      return_to_main_menu
     when "12"
-      puts "Strawweight (115)"
+      puts "Strawweight Division (115)"
       puts "Champion: "
       puts "Won title: "
       puts "Defenses: "
+      return_to_main_menu
+    when "q"
+      return true
+    else
+      puts "Invalid input: "
+      user_input
+    end
+  #  end
+  end
+  
+  def return_to_main_menu
+    puts "Return to Main Menu? (y/n):"
+    choice = gets.strip.downcase
+    if choice == "y"
+      list_of_divisions
+      user_input
     end
   end
   
