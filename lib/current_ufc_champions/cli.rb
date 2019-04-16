@@ -1,6 +1,19 @@
-
+require_relative "./champion"
+require_relative "./division"
 
 class CurrentUfcChampions::CLI
+  HEAVYWEIGHT = CurrentUfcChampions::Division.new("Heavyweight", "Up to 265 pounds")
+  LIGHT_HEAVYWEIGHT = CurrentUfcChampions::Division.new("Light heavyweight", "205")
+  MIDDLEWEIGHT = CurrentUfcChampions::Division.new("Middleweight", "185")
+  WELTERWEIGHT = CurrentUfcChampions::Division.new("Welterweight", "170")
+  LIGHTWEIGHT = CurrentUfcChampions::Division.new("Lightweight", "155")
+  MENS_FEATHERWEIGHT = CurrentUfcChampions::Division.new("Men's featherweight", "145")
+  MENS_BANTAMWEIGHT = CurrentUfcChampions::Division.new("Men's bantamweight", "135")
+  MENS_FLYWEIGHT = CurrentUfcChampions::Division.new("Men's flyweight", "125")
+  WOMENS_FEATHERWEIGHT = CurrentUfcChampions::Division.new("Women's featherweight", "145")
+  WOMENS_BANTAMWEIGHT = CurrentUfcChampions::Division.new("Women's bantamweight", "135")
+  WOMENS_FLYWEIGHT = CurrentUfcChampions::Division.new("Women's flyweight", "125")
+  STRAWWEIGHT = CurrentUfcChampions::Division.new("Strawweight", "115")
   
   def call
     puts "Welcome to Current UFC Champions"
@@ -8,24 +21,20 @@ class CurrentUfcChampions::CLI
     user_input
   end
   
-  def create_divisions
-    
-  end
-  
   def list_of_divisions
     puts "List of Divisions:"
-    puts "1. Heavyweight (Up to 265 pounds)"
-    puts "2. Light heavyweight (205)"
-    puts "3. Middleweight (185)"
-    puts "4. Welterweight (170)"
-    puts "5. Lightweight (155)"
-    puts "6. Men's featherweight (145)"
-    puts "7. Men's bantamweight (135)"
-    puts "8. Men's flyweight (125)"
-    puts "9. Women's featherweight (145)"
-    puts "10. Women's bantamweight (135)"
-    puts "11. Women's flyweight (125)"
-    puts "12. Strawweight (115)"
+    puts "1. #{HEAVYWEIGHT.name} (#{HEAVYWEIGHT.weight})"
+    puts "2. #{LIGHT_HEAVYWEIGHT.name} (#{LIGHT_HEAVYWEIGHT.weight})"
+    puts "3. #{MIDDLEWEIGHT.name} (#{MIDDLEWEIGHT.weight})"
+    puts "4. #{WELTERWEIGHT.name} (#{WELTERWEIGHT.weight})"
+    puts "5. #{LIGHTWEIGHT.name} (#{LIGHTWEIGHT.weight})"
+    puts "6. #{MENS_FEATHERWEIGHT.name} (#{MENS_FEATHERWEIGHT.weight})"
+    puts "7. #{MENS_BANTAMWEIGHT.name} (#{MENS_BANTAMWEIGHT.weight})"
+    puts "8. #{MENS_FLYWEIGHT.name} (#{MENS_FLYWEIGHT.weight})"
+    puts "9. #{WOMENS_FEATHERWEIGHT.name} (#{WOMENS_FEATHERWEIGHT.weight})"
+    puts "10. #{WOMENS_BANTAMWEIGHT.name} (#{WOMENS_BANTAMWEIGHT.weight})"
+    puts "11. #{WOMENS_FLYWEIGHT.name} (#{WOMENS_FLYWEIGHT.weight})"
+    puts "12. #{STRAWWEIGHT.name} (#{STRAWWEIGHT.weight})"
   end
   
   def user_input
