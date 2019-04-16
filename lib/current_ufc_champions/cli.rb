@@ -8,6 +8,10 @@ class CurrentUfcChampions::CLI
     user_input
   end
   
+  def create_divisions
+    
+  end
+  
   def list_of_divisions
     puts "List of Divisions:"
     puts "1. Heavyweight (Up to 265 pounds)"
