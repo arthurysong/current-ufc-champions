@@ -1,5 +1,5 @@
 class CurrentUfcChampions::Division
-  attr_accessor :name, :weight
+  attr_accessor :name, :weight, :champion
   @@all = []
   
   def initialize(name, weight)
