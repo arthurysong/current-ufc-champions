@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+  Upon execution, program will display a list of the divisions in the UFC. Enter choice (1-12) to see the champion and more info of desired division. Program will display selected division/champion info. Enter choice (y/n) for whether or not you want to exit or return to main menu. If 'y', program will loop back to main menu. If 'n', program will exit.
 
 ## Development
 
