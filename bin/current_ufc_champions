@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require "./lib/current_ufc_champions"
 
 

@@ -1,8 +1,8 @@
-require_relative "./champion"
-require_relative "./division"
-require "nokogiri"
-require "open-uri"
-require "pry"
+#require_relative "./champion"
+#require_relative "./division"
+#require "nokogiri"
+#require "open-uri"
+#require "pry"
 
 class CurrentUfcChampions::CLI
   
