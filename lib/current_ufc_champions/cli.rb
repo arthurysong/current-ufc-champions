@@ -19,13 +19,13 @@ class CurrentUfcChampions::CLI
   array_of_info = array_of_info[1, 12] #delete text elements that are extraneous
   array_of_info.insert(6, "") #hard code position 6 because title is vacant
 
-  DIVISION_INSTANCES = division_array.collect do |division_element| #creates an array of division instances
+  division_array.each do |division_element| #creates an array of division instances
     temp = division_element.text.split(" (") #temp array containing name and weight .. need to parse
     temp[1] = temp[1].chomp(")") #temp[0] equal to name temp[1] equal to weight
     CurrentUfcChampions::Division.new(temp[0], temp[1])
   end
-  
-  DIVISION_INSTANCES.each_with_index do |division, index| #sets each division's champion to new champion with champion name
+
+  CurrentUfcChampions::Division.all.each_with_index do |division, index| #sets each division's champion to new champion with champion name
    # puts champion_array[index].text
     if array_of_champion_names[index] != "" 
       division.champion = CurrentUfcChampions::Champion.new(array_of_champion_names[index])
@@ -35,18 +35,18 @@ class CurrentUfcChampions::CLI
   end
   
   #setting attributes of champion (title_won, outcome, defenses)
-  DIVISION_INSTANCES.each_with_index do |division, index|
+  CurrentUfcChampions::Division.all.each_with_index do |division, index|
     if array_of_info[index] != ""
       division.champion.title_won = array_of_info[index].split("\n")[0].strip
       division.champion.outcome = array_of_info[index].split("\n")[1].delete_prefix("• Outcome: ")
       division.champion.defenses = array_of_info[index].split("\n")[2].delete_prefix("• Defenses: ")[/\d/]
     end
   end
-  
+
   #hard code index 6 because champion is vacant.
-  DIVISION_INSTANCES[6].champion.title_won = "N/A"
-  DIVISION_INSTANCES[6].champion.outcome = "N/A"
-  DIVISION_INSTANCES[6].champion.defenses = "N/A"
+  CurrentUfcChampions::Division.all[6].champion.title_won = "N/A"
+  CurrentUfcChampions::Division.all[6].champion.outcome = "N/A"
+  CurrentUfcChampions::Division.all[6].champion.defenses = "N/A"
   
   def call
     puts "\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
@@ -58,7 +58,7 @@ class CurrentUfcChampions::CLI
   
   def list_of_divisions
     puts "\nList of Divisions:"
-    DIVISION_INSTANCES.each_with_index do |division, index|
+    CurrentUfcChampions::Division.all.each_with_index do |division, index|
       puts "#{index + 1}. #{division.name} (#{division.weight})"
     end
   end
@@ -74,7 +74,7 @@ class CurrentUfcChampions::CLI
     end
     
     if choice != "q"
-      DIVISION_INSTANCES[choice.to_i - 1].display_info
+      CurrentUfcChampions::Division.all[choice.to_i - 1].display_info
       return_to_main_menu
     end
   end
