@@ -8,6 +8,7 @@ class CurrentUfcChampions::Champion
   
   def initialize (name)
     @name = name
+    @@all << self
   end
   
   def display_info

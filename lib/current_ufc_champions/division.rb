@@ -5,6 +5,7 @@ class CurrentUfcChampions::Division
   def initialize(name, weight)
     @name = name
     @weight = weight
+    @@all << self
   end
   
   def self.all
