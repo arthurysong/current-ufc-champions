@@ -107,8 +107,20 @@ class CurrentUfcChampions::CLI
  #   choice = "" 
  #   while choice != "q"
     puts "Select which division you would like to see (1-12) or 'q' to quit: "
-    choice = gets.chomp
-    case choice
+    choice = gets.chomp.downcase
+   # case choice
+    valid_choices = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "q"]
+    until valid_choices.any?(choice) do #validate choice by comparing against array of valid choices
+      puts "Invalid input.."
+      user_input
+    end
+    
+    if choice != "q"
+      DIVISION_INSTANCES[choice.to_i - 1].display_info
+      return_to_main_menu
+    end
+    
+=begin    
     when "1"
       DIVISION_INSTANCES[0].display_info
       return_to_main_menu
@@ -151,6 +163,7 @@ class CurrentUfcChampions::CLI
       puts "Invalid input: "
       user_input
     end
+=end    
   #  end
   end
   
