@@ -80,7 +80,7 @@ class CurrentUfcChampions::CLI
   end
   
   def return_to_main_menu
-    puts "Return to Main Menu? (y/n):"
+    puts "\nReturn to Main Menu? (y/n):"
     choice = gets.strip.downcase
     until (choice == "y") || (choice == "n") do
       puts "Invalid input"
