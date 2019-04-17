@@ -35,10 +35,13 @@ class CurrentUfcChampions::CLI
     end
   end
   
+  #setting attributes of champion (title_won, outcome, defenses)
   DIVISION_INSTANCES.each_with_index do |division, index|
     if array_of_info[index] != ""
       #puts array_of_info[index].split("\n")[0].strip
+      puts array_of_info[index].split("\n")[1].delete_prefix("• Outcome: ")
       division.champion.title_won = array_of_info[index].split("\n")[0].strip
+      division.champion.outcome = array_of_info[index].split("\n")[1].delete_prefix("• Outcome: ")
     end
   end
   
@@ -108,84 +111,84 @@ class CurrentUfcChampions::CLI
       puts "Heavyweight Division (Up to 265 pounds)"
       puts "Champion: #{DIVISION_INSTANCES[0].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[0].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[0].champion.outcome}"
       puts "Defenses: 1"
       return_to_main_menu
     when "2"
       puts "Light heavyweight Division (205)"
       puts "Champion: #{DIVISION_INSTANCES[1].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[1].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[1].champion.outcome}"
       puts "Defenses: "
       return_to_main_menu
     when "3"
       puts "Middleweight Division (185)"
       puts "Champion: #{DIVISION_INSTANCES[2].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[2].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[2].champion.outcome}"
       puts "Defenses: "
       return_to_main_menu
     when "4"
       puts "Welterweight Division (170)"
       puts "Champion: #{DIVISION_INSTANCES[3].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[3].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[3].champion.outcome}"
       puts "Defenses: "
       return_to_main_menu
     when "5"
       puts "Lightweight Division (155)"
       puts "Champion: #{DIVISION_INSTANCES[4].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[4].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[4].champion.outcome}"
       puts "Defenses: "
       return_to_main_menu
     when "6"
       puts "Men's featherweight Division (145)"
       puts "Champion: #{DIVISION_INSTANCES[5].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[5].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[5].champion.outcome}"
       puts "Defenses: "
       return_to_main_menu
     when "7"
       puts "Men's bantamweight Division (135)"
       puts "Champion: #{DIVISION_INSTANCES[6].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[6].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[6].champion.outcome}"
       puts "Defenses: "
       return_to_main_menu
     when "8"
       puts "Men's flyweight Division (125)"
       puts "Champion: #{DIVISION_INSTANCES[7].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[7].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[7].champion.outcome}"
       puts "Defenses: "
       return_to_main_menu
     when "9"
       puts "Women's featherweight Division (145)"
       puts "Champion: #{DIVISION_INSTANCES[8].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[8].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[8].champion.outcome}"
       puts "Defenses: "
       return_to_main_menu
     when "10"
       puts "Women's bantamweight Division (135)"
       puts "Champion: #{DIVISION_INSTANCES[9].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[9].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[9].champion.outcome}"
       puts "Defenses: "
       return_to_main_menu
     when "11"
       puts "Women's flyweight Division (125)"
       puts "Champion: #{DIVISION_INSTANCES[10].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[10].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[10].champion.outcome}"
       puts "Defenses: "
       return_to_main_menu
     when "12"
       puts "Strawweight Division (115)"
       puts "Champion: #{DIVISION_INSTANCES[11].champion.name}"
       puts "Won title: #{DIVISION_INSTANCES[11].champion.title_won}"
-      puts "Outcome: "
+      puts "Outcome: #{DIVISION_INSTANCES[11].champion.outcome}"
       puts "Defenses: "
       return_to_main_menu
     when "q"
