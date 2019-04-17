@@ -1,8 +1,6 @@
 # CurrentUfcChampions
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/current_ufc_champions`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+  This program displays information about the current UFC champions of each division. When executed program will display a list of the different divisions in the UFC. User can select a division. Program will then display the info of the champion of the selected division. This includes the champion's name, date title won, how he won the champion, and how many times he defended the title. User can return to main menu or quit. Program will loop until user chooses to quit. All info of divisions and champions are scraped from this url: http://www.espn.com/mma/story/_/id/14947566/current-all-ufc-champions. Enjoy!
 
 ## Installation
 
