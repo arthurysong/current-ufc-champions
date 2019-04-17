@@ -49,13 +49,15 @@ class CurrentUfcChampions::CLI
   DIVISION_INSTANCES[6].champion.defenses = "N/A"
   
   def call
+    puts "\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
     puts "Welcome to Current UFC Champions"
+    puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
     list_of_divisions
     user_input
   end
   
   def list_of_divisions
-    puts "List of Divisions:"
+    puts "\nList of Divisions:"
     DIVISION_INSTANCES.each_with_index do |division, index|
       puts "#{index + 1}. #{division.name} (#{division.weight})"
     end
@@ -65,9 +67,10 @@ class CurrentUfcChampions::CLI
     puts "Select which division you would like to see (1-12) or 'q' to quit: "
     choice = gets.chomp.downcase
     valid_choices = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "q"]
-    until valid_choices.any?(choice) do #validate choice by comparing against array of valid choices
+    until valid_choices.include?(choice) do #validate choice by comparing against array of valid choices
       puts "Invalid input.."
-      user_input
+      puts "Select which division you would like to see (1-12) or 'q' to quit: "
+      choice = gets.chomp.downcase
     end
     
     if choice != "q"
@@ -81,7 +84,8 @@ class CurrentUfcChampions::CLI
     choice = gets.strip.downcase
     until (choice == "y") || (choice == "n") do
       puts "Invalid input"
-      return_to_main_menu
+      puts "Return to Main Menu? (y/n):"
+      choice = gets.strip.downcase
     end
     if choice == "y"
       list_of_divisions

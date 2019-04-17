@@ -12,7 +12,7 @@ class CurrentUfcChampions::Division
   end
   
   def display_info
-    puts "#{@name} Division (#{@weight})"
+    puts "\n#{@name} Division (#{@weight})"
     @champion.display_info
   end
   
