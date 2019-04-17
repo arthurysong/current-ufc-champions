@@ -18,7 +18,7 @@ class CurrentUfcChampions::CLI
   array_of_info = doc.css("p").text.split("Won title:") #select p element texts and split by "won title"
   array_of_info = array_of_info[1, 12] #delete text elements that are extraneous
   array_of_info.insert(6, "") #hard code position 6 because title is vacant
-  binding.pry
+ # binding.pry
   
   DIVISION_INSTANCES = division_array.collect do |division_element| #creates an array of division instances
     temp = division_element.text.split(" (") #temp array containing name and weight .. need to parse
@@ -157,6 +157,10 @@ class CurrentUfcChampions::CLI
   def return_to_main_menu
     puts "Return to Main Menu? (y/n):"
     choice = gets.strip.downcase
+    until (choice == "y") || (choice == "n") do
+      puts "Invalid input"
+      return_to_main_menu
+    end
     if choice == "y"
       list_of_divisions
       user_input
