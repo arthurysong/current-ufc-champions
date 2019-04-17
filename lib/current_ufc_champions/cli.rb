@@ -25,9 +25,10 @@ class CurrentUfcChampions::CLI
       choice = gets.chomp.downcase
     end
     
-    CurrentUfcChampions::Division.all[choice.to_i - 1].display_info
-    return_to_main_menu
-
+    if choice != "q" #need because q gets changed to 0 integer
+      CurrentUfcChampions::Division.all[choice.to_i - 1].display_info
+      return_to_main_menu
+    end
   end
   
   def return_to_main_menu
