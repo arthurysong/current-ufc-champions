@@ -10,4 +10,10 @@ class CurrentUfcChampions::Champion
     @name = name
   end
   
+  def display_info
+    puts "Champion: #{@name}"
+    puts "Won title: #{@title_won}"
+    puts "Outcome: #{@outcome}"
+    puts "Defenses: #{@defenses}"
+  end
 end
