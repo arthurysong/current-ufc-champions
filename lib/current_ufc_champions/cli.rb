@@ -1,57 +1,9 @@
-#require_relative "./champion"
-#require_relative "./division"
-#require "nokogiri"
-#require "open-uri"
-#require "pry"
-
 class CurrentUfcChampions::CLI
-  
-  #scraping
-  html = open("http://www.espn.com/mma/story/_/id/14947566/current-all-ufc-champions")
-  doc = Nokogiri::HTML(html)
-  division_array = doc.css("h2 a") #array of division elements
-  champion_array = doc.css("p strong a")
-  array_of_champion_names = champion_array.collect do |champion| #collect all NAMES into array_of_champion_names so I can insert blank name in next line
-    champion.text
-  end
-  array_of_champion_names.insert(6, "") #hard code position 6 because title is vacant
-  array_of_info = doc.css("p").text.split("Won title:") #select p element texts and split by "won title"
-  array_of_info = array_of_info[1, 12] #delete text elements that are extraneous
-  array_of_info.insert(6, "") #hard code position 6 because title is vacant
-
-  division_array.each do |division_element| #creates an array of division instances
-    temp = division_element.text.split(" (") #temp array containing name and weight .. need to parse
-    temp[1] = temp[1].chomp(")") #temp[0] equal to name temp[1] equal to weight
-    CurrentUfcChampions::Division.new(temp[0], temp[1])
-  end
-
-  CurrentUfcChampions::Division.all.each_with_index do |division, index| #sets each division's champion to new champion with champion name
-   # puts champion_array[index].text
-    if array_of_champion_names[index] != "" 
-      division.champion = CurrentUfcChampions::Champion.new(array_of_champion_names[index])
-    else
-      division.champion = CurrentUfcChampions::Champion.new("No Champion")
-    end
-  end
-  
-  #setting attributes of champion (title_won, outcome, defenses)
-  CurrentUfcChampions::Division.all.each_with_index do |division, index|
-    if array_of_info[index] != ""
-      division.champion.title_won = array_of_info[index].split("\n")[0].strip
-      division.champion.outcome = array_of_info[index].split("\n")[1].delete_prefix("• Outcome: ")
-      division.champion.defenses = array_of_info[index].split("\n")[2].delete_prefix("• Defenses: ")[/\d/]
-    end
-  end
-
-  #hard code index 6 because champion is vacant.
-  CurrentUfcChampions::Division.all[6].champion.title_won = "N/A"
-  CurrentUfcChampions::Division.all[6].champion.outcome = "N/A"
-  CurrentUfcChampions::Division.all[6].champion.defenses = "N/A"
-  
   def call
     puts "\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
     puts "Welcome to Current UFC Champions"
     puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+    CurrentUfcChampions::Scraper.new.scrape
     list_of_divisions
     user_input
   end
