@@ -25,12 +25,12 @@ class CurrentUfcChampions::Scraper
     array_of_champion_names.insert(6, "") 
     
     CurrentUfcChampions::Division.all.each_with_index do |division, index| 
-    if array_of_champion_names[index] != "" 
-      division.champion = CurrentUfcChampions::Champion.new(array_of_champion_names[index])
-    else
-      division.champion = CurrentUfcChampions::Champion.new("No Champion")
+      if array_of_champion_names[index] != "" 
+        division.champion = CurrentUfcChampions::Champion.new(array_of_champion_names[index])
+      else
+        division.champion = CurrentUfcChampions::Champion.new("No Champion")
+      end
     end
-  end
   end
   
   def scrape_champions_info
